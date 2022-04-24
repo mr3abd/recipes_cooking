@@ -26,14 +26,13 @@
 #  fk_rails_...  (category_id => categories.id)
 #
 class Recipe < ApplicationRecord
-
   include Filterable
   belongs_to :category
   belongs_to :author
   has_and_belongs_to_many :ingredients
 
   scope :filter_by_title, ->(title) { where('title like ?', "%#{title}%") }
-  scope :filter_by_category, ->(category) { where(category: Category.where('title like ?', "%#{category}%") ) }
+  scope :filter_by_category, ->(category) { where(category: Category.where('title like ?', "%#{category}%")) }
   scope :filter_by_author_id, ->(author_id) { where(author_id: author_id) }
   scope :filter_by_ratings, ->(ratings) { where(ratings: ratings..) }
   scope :filter_by_less_time, ->(less_time) { where(total_time: ..less_time) }
