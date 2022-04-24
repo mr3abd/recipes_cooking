@@ -1,10 +1,10 @@
 <%= render "header" %>
 
 <%= form_tag(recipes_path, method: 'get') do %>
-  <%= text_field_tag(:title, params[:title] , class: "form-control") %>
+  <%= text_field_tag(:title, params[:title] , class: "form-control" , placeholder: "Need search by title") %>
   <%= text_field_tag(:category, params[:category] , class: "form-control", placeholder: "Need search by category") %>
   <%= number_field_tag(:ratings, params[:ratings] , class: "form-control" , placeholder: "Need rateing more than ?") %>
-  <%= number_field_tag(:less_time, params[:less_time] , class: "form-control" , placeholder: "Need less_time  than mins ?") %>
+  <%= number_field_tag(:less_time, params[:less_time] , class: "form-control" , placeholder: "Need less_time  than by Mins ?") %>
   <%= submit_tag %>
 <% end %>
 
