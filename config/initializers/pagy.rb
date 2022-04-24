@@ -1,2 +1,1 @@
 require 'pagy/extras/bootstrap'
-

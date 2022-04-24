@@ -1,0 +1,29 @@
+require:
+    - rubocop-rails
+Style/Documentation:
+    Enabled: false
+Style/HashEachMethods:
+    Enabled: true
+Style/HashTransformKeys:
+    Enabled: true
+Style/HashTransformValues:
+    Enabled: true
+Lint/StructNewOverride:
+    Enabled: true
+Lint/RaiseException:
+    Enabled: true
+Layout/SpaceAroundMethodCallOperator:
+    Enabled: true
+Style/ExponentialNotation:
+    Enabled: true
+Style/FrozenStringLiteralComment:
+    EnforcedStyle: never
+Metrics/BlockLength:
+    Exclude:
+    - spec/**/*
+    - config/**/*
+Layout/LineLength:
+    Max: 120
+Rails/UniqueValidationWithoutIndex:
+    Enabled: false
+
