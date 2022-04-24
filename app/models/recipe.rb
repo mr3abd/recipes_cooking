@@ -35,6 +35,9 @@ class Recipe < ApplicationRecord
   scope :filter_by_author_id, ->(author_id) { where(author_id: author_id) }
   scope :filter_by_ratings, ->(ratings) { where(ratings: ratings..) }
 
+  before_save :update_total_time
+
+
   def self.seed_json_data(json_file)
     data = JSON.parse(json_file)
     data.each do |recipe_data|
@@ -58,4 +61,9 @@ class Recipe < ApplicationRecord
       p '#' * 5
     end
   end
+
+  def update_total_time
+    self.total_time = self.prep_time.to_f + self.cook_time.to_f
+  end
+
 end
