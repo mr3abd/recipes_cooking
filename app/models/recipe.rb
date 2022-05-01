@@ -63,6 +63,21 @@ class Recipe < ApplicationRecord
     end
   end
 
+  # for finding best Recipes for my current_ingredientss_ids
+  def self.my_ingredintes(current_ingredientss_ids)
+    joins(:ingredients).where(ingredients: { id: current_ingredientss_ids }).select do |recipe|
+      recipe.match_ingredients(current_ingredientss_ids)
+    end
+  end
+
+  def match_ingredients(array_ids)
+    returned = []
+    ingredients.ids.each do |ingredinet_id|
+      returned << array_ids.include?(ingredinet_id)
+    end
+    returned.exclude?(false)
+  end
+
   def update_total_time
     self.total_time = prep_time.to_f + cook_time.to_f
   end
